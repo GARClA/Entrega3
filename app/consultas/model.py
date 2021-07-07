@@ -6,8 +6,6 @@ class Consulta(db.Model):
     data = db.Column(db.String(10), nullable = False)
     hora = db.Column(db.String(5), nullable = False)
     tipo = db.Column(db.String(20), nullable = False)
-
-    #Pensar em usar Datetime no lugar de String
     medico_id = db.Column(db.Integer, db.ForeignKey('medico.id'))
     paciente_id = db.Column(db.Integer, db.ForeignKey('paciente.id'))
 
