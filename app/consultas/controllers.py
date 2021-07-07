@@ -10,6 +10,7 @@ def criar_consulta():
         dados = request.json
         data = dados.get('data')
         hora = dados.get('hora')
+        tipo = dados.get('tipo')
         medico_id = dados.get('medico_id')
         paciente_id = dados.get('paciente_id')
 
@@ -20,10 +21,12 @@ def criar_consulta():
             return{'error':'ID do paciente inválido'}
         if not isinstance(hora,str):
             return{'error':'Hora inválida'}
+        if not isinstance(tipo,str):
+            return{'error':'Tipo inválido'}
         if not isinstance(data,str):
             return{'error':'Data inválida'}
 
-        consulta = Consulta(data = data, hora = hora, medico_id = medico_id, paciente_id = paciente_id)
+        consulta = Consulta(data = data, hora = hora, medico_id = medico_id, paciente_id = paciente_id, tipo = tipo)
         db.session.add(consulta)
         db.session.commit()
 
