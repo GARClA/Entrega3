@@ -9,3 +9,7 @@ class Paciente(db.Model):
 
     consultas = db.relationship('Consulta')
     exames = db.relationship('Exame')
+
+    def json(self):
+        return {"nome":self.nome,
+                "cpf":self.cpf}

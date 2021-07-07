@@ -11,3 +11,8 @@ class Medico(db.Model):
     
     consultas = db.relationship('Consulta')
     receitas = db.relationship('Receita', secondary = association_table, backref = 'medico')
+
+    def json(self):
+        return {"nome":self.nome,
+                "cpf":self.cpf,
+                "especialidade":self.especialidade}

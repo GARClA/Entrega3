@@ -8,3 +8,6 @@ class Receita(db.Model):
     descricao = db.Column(db.String(800), nullable = False)
 
     medicos = db.relationship('Medico', secondary = association_table, backref = 'receita')
+
+    def json(self):
+        return {"descricao":self.descricao}
