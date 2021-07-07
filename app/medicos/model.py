@@ -1,5 +1,6 @@
 from app.extensions import db
 from enum import unique
+from app.association import association_table
 
 class Medico(db.Model):
     __tablename__ = 'medico'
@@ -8,3 +9,5 @@ class Medico(db.Model):
     nome = db.Column(db.String(40), nullable = False)
     especialidade = db.Column(db.String(20), nullable = False)
     
+    consultas = db.relationship('Consulta')
+    receitas = db.relationship('Receita', secondary = association_table, backref = 'medico')

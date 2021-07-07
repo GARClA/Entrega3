@@ -7,3 +7,4 @@ class Exame(db.Model):
     nome = db.Column(db.String(40), nullable = False,  unique = True)
     preco = db.Column(db.Float, nullable = False)
     
+    paciente_id = db.Column(db.Integer, db.ForeignKey('paciente.id'))
