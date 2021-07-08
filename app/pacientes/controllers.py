@@ -10,14 +10,20 @@ def criar_paciente():
         dados = request.json
         nome = dados.get('nome')
         cpf = dados.get('cpf')
+        temperatura = dados.get('temperatura')
+        pressao = dados.get('pressao')
 
         #Validando os dados
         if not isinstance(nome,str):
             return{'error':'Nome do paciente inválido'}
         if not isinstance(cpf,int):
-            return{'error':'CPF do paciente inválido'}          
+            return{'error':'CPF do paciente inválido'}     
+        if not isinstance(temperatura,int):
+            return{'error':'Temperatura do paciente inválida'}  
+        if not isinstance(pressao,str):
+            return{'error':'Pressão do paciente inválida'}   
 
-        paciente = Paciente(cpf = cpf, nome=nome)
+        paciente = Paciente(cpf = cpf, nome=nome, temperatura = temperatura, pressao = pressao)
         db.session.add(paciente)
         db.session.commit()
 
